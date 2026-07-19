@@ -44,18 +44,18 @@ const SECTIONS: Section[] = [
   {
     key: "about",
     title: "About You",
-    subtitle: "Basic info taake RaahAI aapko personally samajh sake.",
+    subtitle: "Basic info so RaahAI can personally understand your background.",
     questions: [
       {
         id: "full_name",
-        label: "Aapka full name?",
+        label: "What is your full name?",
         type: "text",
         placeholder: "e.g. Ahmed Khan",
         required: true,
       },
       {
         id: "age_range",
-        label: "Age range?",
+        label: "What is your age range?",
         type: "dropdown",
         required: false,
         options: ["Under 18", "18-22", "23-27", "28-32", "33-40", "40+"],
@@ -69,7 +69,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "languages",
-        label: "Languages aapko aati hain? (multiple)",
+        label: "Which languages do you speak? (Select all that apply)",
         type: "checkbox",
         options: ["Urdu", "English", "Hindi", "Punjabi", "Arabic", "Pashto", "Sindhi", "Other"],
       },
@@ -90,7 +90,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "field",
-        label: "Field of study / expertise?",
+        label: "Field of study / area of interest?",
         type: "text",
         placeholder: "e.g. Computer Science, Business, Design",
       },
@@ -99,7 +99,7 @@ const SECTIONS: Section[] = [
   {
     key: "career",
     title: "Career Status",
-    subtitle: "Aap abhi kahan ho aur kahan jaana hai.",
+    subtitle: "Where you currently stand and where you want to go.",
     questions: [
       {
         id: "status",
@@ -108,11 +108,11 @@ const SECTIONS: Section[] = [
         required: false,
         options: [
           "Student",
-          "Job dhoond raha/rahi hoon",
+          "Looking for a job/internship",
           "Working professional",
           "Freelancer",
           "Founder / Entrepreneur",
-          "Career switch kar raha/rahi hoon",
+          "Switching my career",
         ],
       },
       {
@@ -150,27 +150,27 @@ const SECTIONS: Section[] = [
       },
       {
         id: "target_role",
-        label: "Next 12 months mein aap kaunsa role/goal chahte ho?",
+        label: "Which specific role/goal do you want to target in the next 12 months?",
         type: "text",
         placeholder: "e.g. Full-stack developer at a product company",
         required: false,
       },
       {
         id: "timeline",
-        label: "Aap kitni jaldi ye goal achieve karna chahte ho?",
+        label: "How soon do you want to achieve this target?",
         type: "radio",
-        options: ["3 months", "6 months", "1 year", "2+ years", "Abhi decide nahi kiya"],
+        options: ["3 months", "6 months", "1 year", "2+ years", "Haven't decided yet"],
       },
     ],
   },
   {
     key: "technical",
     title: "Technical Skills",
-    subtitle: "Skills, tools aur proficiency.",
+    subtitle: "Your tools, technologies, and level of proficiency.",
     questions: [
       {
         id: "tech_skills",
-        label: "Konsi technical skills aati hain? (jitni bhi lagen)",
+        label: "Which technical skills do you have? (Select all that apply)",
         type: "checkbox",
         axis: "technical",
         weight: 40,
@@ -194,13 +194,13 @@ const SECTIONS: Section[] = [
       },
       {
         id: "primary_stack",
-        label: "Primary tools / stack? (jo sabse zyada use karte ho)",
+        label: "Primary tools / stack? (the ones you use the most)",
         type: "text",
         placeholder: "e.g. React, Node.js, Figma, Python",
       },
       {
         id: "self_rating",
-        label: "Apni technical proficiency kaisi rate karoge?",
+        label: "How would you rate your technical proficiency?",
         type: "scale",
         axis: "technical",
         weight: 25,
@@ -209,7 +209,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "projects_built",
-        label: "Kitne real projects/products build kiye hain?",
+        label: "How many real-world projects/products have you built?",
         type: "dropdown",
         axis: "technical",
         weight: 20,
@@ -218,7 +218,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "certifications",
-        label: "Koi certifications / notable achievements?",
+        label: "Any certifications or notable achievements?",
         type: "text",
         placeholder: "e.g. AWS Certified, Google UX, hackathon winner",
       },
@@ -227,11 +227,11 @@ const SECTIONS: Section[] = [
   {
     key: "leadership",
     title: "Leadership",
-    subtitle: "Team, ownership aur decision-making style.",
+    subtitle: "Teamwork, ownership and decision-making style.",
     questions: [
       {
         id: "led_team",
-        label: "Kabhi team lead ki hai?",
+        label: "Have you ever led a team?",
         type: "radio",
         required: false,
         axis: "leadership",
@@ -247,7 +247,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "leader_traits",
-        label: "Apni leadership strength kya hai? (multiple)",
+        label: "What are your leadership strengths? (Select all that apply)",
         type: "checkbox",
         axis: "leadership",
         weight: 20,
@@ -263,7 +263,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "ownership",
-        label: "Ownership level: jab problem aati hai to?",
+        label: "Ownership level: when a problem arises, you usually...",
         type: "radio",
         axis: "leadership",
         weight: 20,
@@ -282,35 +282,35 @@ const SECTIONS: Section[] = [
       },
       {
         id: "mentored",
-        label: "Kisi ko mentor kiya hai?",
+        label: "Have you ever mentored anyone?",
         type: "radio",
         axis: "leadership",
         weight: 15,
-        options: ["Never", "Informally 1-2 log", "Regularly 3-5 log", "10+ people over time"],
+        options: ["Never", "Informally 1-2 people", "Regularly 3-5 people", "10+ people over time"],
         scoreMap: {
           Never: 0,
-          "Informally 1-2 log": 6,
-          "Regularly 3-5 log": 11,
+          "Informally 1-2 people": 6,
+          "Regularly 3-5 people": 11,
           "10+ people over time": 15,
         },
       },
       {
         id: "decision_style",
-        label: "Decision making style?",
+        label: "What is your decision-making style?",
         type: "radio",
         axis: "leadership",
         weight: 20,
         options: [
-          "Data ke baghair decide nahi karta",
-          "Data + gut mix",
+          "Never decide without data",
+          "A mix of data and gut feeling",
           "Mostly gut / intuition",
-          "Depends on situation",
+          "Depends on the situation",
         ],
         scoreMap: {
-          "Data ke baghair decide nahi karta": 15,
-          "Data + gut mix": 20,
+          "Never decide without data": 15,
+          "A mix of data and gut feeling": 20,
           "Mostly gut / intuition": 10,
-          "Depends on situation": 17,
+          "Depends on the situation": 17,
         },
       },
     ],
@@ -318,7 +318,7 @@ const SECTIONS: Section[] = [
   {
     key: "networking",
     title: "Networking & Presence",
-    subtitle: "Log aapko kitna jaante hain, aap logon tak kitna pohanchte ho.",
+    subtitle: "How well people know you, and how effectively you reach out to others.",
     questions: [
       {
         id: "linkedin_size",
@@ -338,7 +338,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "events",
-        label: "Last 6 months mein kitne events/meetups attend kiye?",
+        label: "How many tech events/meetups have you attended in the last 6 months?",
         type: "dropdown",
         axis: "networking",
         weight: 15,
@@ -347,28 +347,28 @@ const SECTIONS: Section[] = [
       },
       {
         id: "outreach_comfort",
-        label: "Cold outreach (DM / email) karne mein kitna comfort hai?",
+        label: "How comfortable are you with cold outreach (DMs or emails)?",
         type: "scale",
         axis: "networking",
         weight: 20,
         options: [
-          "1 - Bilkul nahi kar sakta",
+          "1 - Not comfortable at all",
           "2",
-          "3 - Kabhi kabhi",
+          "3 - Sometimes comfortable",
           "4",
-          "5 - Regular karta hoon",
+          "5 - Highly comfortable & regular",
         ],
         scoreMap: {
-          "1 - Bilkul nahi kar sakta": 3,
+          "1 - Not comfortable at all": 3,
           "2": 8,
-          "3 - Kabhi kabhi": 13,
+          "3 - Sometimes comfortable": 13,
           "4": 17,
-          "5 - Regular karta hoon": 20,
+          "5 - Highly comfortable & regular": 20,
         },
       },
       {
         id: "community",
-        label: "Kis community / platform pe active ho? (multiple)",
+        label: "Which communities or platforms are you active on? (Select all that apply)",
         type: "checkbox",
         axis: "networking",
         weight: 15,
@@ -385,7 +385,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "content_share",
-        label: "Publicly kuch share karte ho? (posts, threads, videos)",
+        label: "Do you share content publicly? (e.g. posts, threads, articles, or videos)",
         type: "radio",
         axis: "networking",
         weight: 15,
@@ -394,7 +394,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "referrals",
-        label: "Job/opportunity mein referral se help mili hai kabhi?",
+        label: "Have you ever received a job or internship referral?",
         type: "radio",
         axis: "networking",
         weight: 15,
@@ -406,11 +406,11 @@ const SECTIONS: Section[] = [
   {
     key: "creativity",
     title: "Creativity & Problem Solving",
-    subtitle: "Naya kaise sochte ho aur kaise banate ho.",
+    subtitle: "How you think outside the box and build new things.",
     questions: [
       {
         id: "creates",
-        label: "Kya create karte ho? (multiple)",
+        label: "What do you create? (Select all that apply)",
         type: "checkbox",
         axis: "creativity",
         weight: 25,
@@ -426,7 +426,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "novel_ideas",
-        label: "Har hafte kitni naye ideas note karte ho?",
+        label: "How many new ideas or projects do you note down each week?",
         type: "dropdown",
         axis: "creativity",
         weight: 20,
@@ -435,21 +435,21 @@ const SECTIONS: Section[] = [
       },
       {
         id: "problem_style",
-        label: "Naya problem milta hai to sabse pehle?",
+        label: "When faced with a new challenge, what is your first step?",
         type: "radio",
         axis: "creativity",
         weight: 20,
         options: [
-          "Google / YouTube dekhta hoon",
-          "AI se poochta hoon",
-          "Khud try karta hoon phir help leta hoon",
-          "First-principles se sochta hoon",
+          "Look it up on Google / YouTube",
+          "Ask an AI assistant",
+          "Try solving it myself first, then ask for help",
+          "Think from first principles",
         ],
         scoreMap: {
-          "Google / YouTube dekhta hoon": 8,
-          "AI se poochta hoon": 10,
-          "Khud try karta hoon phir help leta hoon": 16,
-          "First-principles se sochta hoon": 20,
+          "Look it up on Google / YouTube": 8,
+          "Ask an AI assistant": 10,
+          "Try solving it myself first, then ask for help": 16,
+          "Think from first principles": 20,
         },
       },
       {
@@ -489,7 +489,7 @@ const SECTIONS: Section[] = [
   {
     key: "discipline",
     title: "Discipline & Habits",
-    subtitle: "Consistency, focus aur daily habits.",
+    subtitle: "Consistency, focus and daily habits.",
     questions: [
       {
         id: "study_hours",
@@ -509,7 +509,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "habits",
-        label: "Kaunsi daily habits maintain karte ho? (multiple)",
+        label: "Which daily habits do you consistently maintain? (Select all that apply)",
         type: "checkbox",
         axis: "discipline",
         weight: 20,
@@ -526,7 +526,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "streak_longest",
-        label: "Longest streak (koi bhi habit) kitne din chali?",
+        label: "What is your longest streak of maintaining any habit?",
         type: "dropdown",
         axis: "discipline",
         weight: 15,
@@ -541,7 +541,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "procrastination",
-        label: "Procrastination level (1 = never, 5 = always)?",
+        label: "Procrastination level (1 = Never, 5 = Always)?",
         type: "scale",
         axis: "discipline",
         weight: 20,
@@ -569,7 +569,7 @@ const SECTIONS: Section[] = [
       },
       {
         id: "distraction",
-        label: "Sabse bada distraction?",
+        label: "What is your biggest daily distraction?",
         type: "radio",
         options: [
           "Social media",
@@ -577,7 +577,7 @@ const SECTIONS: Section[] = [
           "Games",
           "Overthinking",
           "Friends / social",
-          "Kuch nahi, focused hoon",
+          "Nothing, I stay highly focused",
         ],
       },
     ],
@@ -585,11 +585,11 @@ const SECTIONS: Section[] = [
   {
     key: "goals",
     title: "Goals & Preferences",
-    subtitle: "Aakhri set — priorities aur learning style.",
+    subtitle: "Final set — priorities and learning style.",
     questions: [
       {
         id: "top_goals",
-        label: "Top 3 goals next 6 months? (max 3)",
+        label: "What are your top 3 goals for the next 6 months? (Select up to 3)",
         type: "checkbox",
         max: 3,
         required: false,
@@ -607,49 +607,49 @@ const SECTIONS: Section[] = [
       },
       {
         id: "blocker",
-        label: "Sabse bada blocker aaj kya hai?",
+        label: "What is your single biggest blocker today?",
         type: "radio",
         required: false,
         options: [
-          "Skills ki kami",
-          "Time nahi milta",
-          "Network / opportunities nahi",
-          "Motivation / clarity nahi",
-          "Money / resources",
-          "Confidence issue",
+          "Lack of skills",
+          "Not enough time",
+          "Lack of professional network or opportunities",
+          "Lack of motivation or career clarity",
+          "Financial constraints or lack of resources",
+          "Confidence or imposter syndrome",
         ],
       },
       {
         id: "learning_style",
-        label: "Best learning style?",
+        label: "What is your preferred learning style?",
         type: "radio",
         options: [
-          "Videos dekh ke",
-          "Padh ke (docs / books)",
-          "Kar ke (hands-on)",
-          "Mentor ke saath",
-          "Community / group mein",
+          "Watching videos",
+          "Reading documentation or books",
+          "Learning by doing (hands-on)",
+          "Learning with a mentor",
+          "In a community or study group",
         ],
       },
       {
         id: "weekly_time",
-        label: "RaahAI ke saath weekly kitna time de sakte ho?",
+        label: "How much time can you dedicate weekly to your learning with RaahAI?",
         type: "dropdown",
         required: false,
         options: ["2-4 hours", "5-8 hours", "9-15 hours", "16-25 hours", "25+ hours"],
       },
       {
         id: "focus_now",
-        label: "Ek line mein: abhi ka current focus kya hai?",
+        label: "In one line, what is your primary current focus?",
         type: "text",
         required: false,
-        placeholder: "e.g. React + TypeScript master karna aur first job land karna",
+        placeholder: "e.g. Master React and land my first internship/job",
       },
       {
         id: "bio",
         label: "Short bio (optional)",
         type: "text",
-        placeholder: "Apne baare mein 1-2 lines",
+        placeholder: "Tell us about yourself in 1-2 lines",
       },
     ],
   },
@@ -797,7 +797,7 @@ function GrowthDNAPage() {
     if (cur.includes(opt)) next = cur.filter((x) => x !== opt);
     else {
       if (max && cur.length >= max) {
-        toast.error(`Max ${max} select kar sakte ho`);
+        toast.error(`You can select a maximum of ${max} options`);
         return;
       }
       next = [...cur, opt];
@@ -880,7 +880,7 @@ function GrowthDNAPage() {
           icon={Sparkles}
           accent="Complete"
           title={`You are a ${done.level}`}
-          description="Aapki Growth DNA calibrate ho gayi. Ab RaahAI aapko personalized roadmap dega."
+          description="Your Growth DNA has been calibrated. RaahAI will now generate your personalized roadmap."
         />
         <div className="rounded-2xl border border-primary/30 bg-card/60 p-6 backdrop-blur space-y-4">
           {Object.entries(done.scores).map(([k, v]) => (
@@ -931,11 +931,11 @@ function GrowthDNAPage() {
       <PageHeader
         icon={Dna}
         accent="Growth DNA Assessment"
-        title="Apni asli growth signature discover karo"
+        title="Discover your true growth signature"
         description={
           existing
-            ? "Aap pehle bhi de chuke ho — retake karne se scores update ho jayenge."
-            : "Detailed assessment. Har jawab AI ko aapko samajhne mein madad karega — baar baar nahi poochna paregi."
+            ? "You have already completed this assessment. Retaking it will update your growth scores."
+            : "This detailed assessment helps our AI customize your learning journey. Be as authentic as possible!"
         }
       />
 
@@ -984,7 +984,7 @@ function GrowthDNAPage() {
         {step < totalSteps - 1 ? (
           <button
             onClick={() =>
-              canNext ? setStep((s) => s + 1) : toast.error("Required fields fill karo")
+              canNext ? setStep((s) => s + 1) : toast.error("Please fill in all required fields")
             }
             className="inline-flex items-center gap-1 rounded-lg bg-primary px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
           >
@@ -992,7 +992,7 @@ function GrowthDNAPage() {
           </button>
         ) : (
           <button
-            onClick={() => (canNext ? submit() : toast.error("Required fields fill karo"))}
+            onClick={() => (canNext ? submit() : toast.error("Please fill in all required fields"))}
             disabled={submitting}
             className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-5 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 disabled:opacity-60"
           >

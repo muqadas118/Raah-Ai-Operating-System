@@ -8,11 +8,12 @@ function maskKey(key: string | undefined): string {
 }
 
 export async function robustCallAI(body: any) {
-  // Use environment variable if set, otherwise fallback to the user's provided Groq key
-  const key = (
-    process.env.GROQ_API_KEY ||
-    process.env.VITE_GROQ_API_KEY ||
-  "").trim();
+  // Use environment variable for the Groq API key
+  const key = process.env.GROQ_API_KEY || process.env.VITE_GROQ_API_KEY;
+
+  if (!key) {
+    throw new Error("GROQ_API_KEY environment variable is not set.");
+  }
 
   // Groq models to try (robust fallbacks)
   const models = ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "llama-3.1-8b-instant"];

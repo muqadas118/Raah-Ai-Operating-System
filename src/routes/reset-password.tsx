@@ -36,14 +36,14 @@ function ResetPasswordPage() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (password.length < 6) return toast.error("Password kam se kam 6 characters ka ho");
-    if (password !== confirm) return toast.error("Passwords match nahi ho rahe");
+    if (password.length < 6) return toast.error("Password must be at least 6 characters");
+    if (password !== confirm) return toast.error("Passwords do not match");
     if (!oobCode) return toast.error("Reset code missing");
 
     setLoading(true);
     try {
       await confirmPasswordReset(auth, oobCode, password);
-      toast.success("Password update ho gaya!");
+      toast.success("Password updated successfully!");
       navigate({ to: "/auth" });
     } catch (error: unknown) {
       const err = error as { message?: string };
@@ -64,11 +64,10 @@ function ResetPasswordPage() {
         </Link>
 
         <div className="rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur">
-          <h1 className="text-xl font-semibold">Naya password set karein</h1>
+          <h1 className="text-xl font-semibold">Set new password</h1>
           {!ready ? (
             <p className="mt-4 text-sm text-muted-foreground">
-              Reset link verify ho raha hai... agar page atka rahe, apne email ka reset link dobara
-              open karein.
+              Verifying reset link... if page gets stuck, please open the link in your email again.
             </p>
           ) : (
             <form onSubmit={onSubmit} className="mt-6 space-y-4">

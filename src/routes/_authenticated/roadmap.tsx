@@ -1,3 +1,4 @@
+import { FormatText } from "@/components/format-text";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -126,7 +127,7 @@ function RoadmapPage() {
       const profileSnap = await getDocs(qProfile);
       const profile = !profileSnap.empty ? profileSnap.docs[0].data() : null;
 
-      if (!assessment) throw new Error("Pehle Growth DNA assessment complete karo.");
+      if (!assessment) throw new Error("Please complete the Growth DNA assessment first.");
 
       // Call AI
       const parsed = await genFn({ data: { assessment, dna, profile } });
@@ -139,7 +140,7 @@ function RoadmapPage() {
       // Save to Firebase
       const newRoadmapRef = await addDoc(collection(db, "roadmaps"), {
         user_id: user.uid,
-        title: parsed.title ?? "My Growth Roadmap",
+        title: parsed?.title ?? "My Growth Roadmap",
         summary: parsed.summary ?? "",
         milestones: parsed.milestones ?? [],
         meta: { model: "gemini-2.5-flash" },
@@ -163,7 +164,7 @@ function RoadmapPage() {
     },
     onError: (e: Error) => {
       console.error(e);
-      toast.error(e?.message ? e.message : "Roadmap generate nahi ho paya - " + JSON.stringify(e));
+      toast.error(e?.message ? e.message : "Failed to generate roadmap - " + JSON.stringify(e));
     },
   });
 
@@ -183,8 +184,7 @@ function RoadmapPage() {
           <Rocket className="mx-auto h-12 w-12 text-primary mb-3" />
           <h3 className="font-display text-2xl font-bold">Generate your personal roadmap</h3>
           <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
-            RaahAI aapki DNA assessment padhega aur aapke level ke hisab se real YouTube videos,
-            books, docs aur ek proper portfolio project har milestone pe rakhega.
+            RaahAI will analyze your DNA assessment and create a structured roadmap with real YouTube videos, books, docs, and a proper portfolio project for each milestone.
           </p>
           <button
             onClick={() => gen.mutate()}
@@ -196,7 +196,7 @@ function RoadmapPage() {
             ) : (
               <Sparkles className="h-4 w-4" />
             )}
-            {gen.isPending ? "AI soch raha hai..." : "Generate My Roadmap"}
+            {gen.isPending ? "AI is thinking..." : "Generate My Roadmap"}
           </button>
         </div>
       )}
@@ -211,7 +211,7 @@ function RoadmapPage() {
         <>
           <div className="mb-8 rounded-2xl border border-border/60 bg-card/60 p-6 backdrop-blur flex items-start justify-between gap-4">
             <div>
-              <h2 className="font-display text-2xl font-bold text-aurora">{roadmap.title}</h2>
+              <h2 className="font-display text-2xl font-bold text-aurora">{roadmap?.title}</h2>
               <p className="mt-2 text-sm text-muted-foreground">{roadmap.summary}</p>
             </div>
             <button
@@ -270,9 +270,9 @@ function RoadmapPage() {
                           <span>{m.skills?.slice(0, 2).join(", ")}</span>
                         </div>
                         <h3 className="font-display text-lg font-semibold group-hover:text-aurora transition">
-                          {m.title}
+                          {m?.title}
                         </h3>
-                        <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{m.why}</p>
+                        <p className="mt-1 text-sm text-muted-foreground line-clamp-2"><FormatText text={m.why} /></p>
                       </button>
 
                       {isOpen && (
@@ -305,7 +305,7 @@ function RoadmapPage() {
                                       <Icon className="h-4 w-4 mt-0.5 text-accent shrink-0" />
                                       <div className="min-w-0">
                                         <div className="text-sm font-medium truncate">
-                                          {r.title}
+                                          {r?.title}
                                         </div>
                                         <div className="text-xs text-muted-foreground truncate">
                                           {r.author_or_channel} · {r.type}
@@ -340,9 +340,9 @@ function RoadmapPage() {
                                   Portfolio Project
                                 </span>
                               </div>
-                              <h4 className="font-display font-semibold">{m.project.title}</h4>
+                              <h4 className="font-display font-semibold">{m.project?.title}</h4>
                               <p className="mt-1 text-sm text-muted-foreground">
-                                {m.project.description}
+                                <FormatText text={m.project.description} />
                               </p>
                               {m.project.tech_stack?.length > 0 && (
                                 <div className="mt-3 flex flex-wrap gap-1.5">

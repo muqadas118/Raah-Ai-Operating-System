@@ -1,3 +1,4 @@
+import { FormatText } from "@/components/format-text";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -255,7 +256,7 @@ function LearningPage() {
         user_id: user.uid,
         type: "learning_mission_completed",
         title: `Day ${mission.day} Complete!`,
-        description: `Successfully completed: "${mission.title}" in 1-hour focus.`,
+        description: `Successfully completed: "${mission?.title}" in 1-hour focus.`,
         xp_earned: 50,
         created_at: new Date().toISOString(),
       });
@@ -300,7 +301,7 @@ function LearningPage() {
     },
     onError: (err: any) => {
       console.error(err);
-      toast.error("Kuch problem aayi progress save karne me.");
+      toast.error("An error occurred while saving your progress.");
     },
   });
 
@@ -345,14 +346,13 @@ function LearningPage() {
           icon={BookOpen}
           accent="Learning Mentor"
           title="Daily Learning Missions"
-          description="AI-curated daily learning, revision, quiz, aur motivation loops — habit-building built in."
+          description="AI-curated daily learning, revision, quizzes, and motivation loops — habit-building built in."
         />
         <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/15 via-card/60 to-accent/10 p-10 text-center backdrop-blur glow-primary">
           <BookMarked className="mx-auto h-12 w-12 text-primary mb-3" />
-          <h3 className="font-display text-2xl font-bold">Pehle aapka Growth Roadmap chahiye</h3>
+          <h3 className="font-display text-2xl font-bold">You need a Growth Roadmap first</h3>
           <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
-            Daily 1-hour high-impact missions tabhi start ho sakti hain jab aapka active roadmap
-            ready ho. Pehle Roadmap page pe jaakar ek customized roadmap generate kijiye.
+            Daily 1-hour high-impact missions can only start when you have an active roadmap ready. Please go to the Roadmap page first to generate a customized roadmap.
           </p>
           <a
             href="/roadmap"
@@ -413,7 +413,7 @@ function LearningPage() {
         icon={BookOpen}
         accent="Learning Mentor"
         title="Daily Learning Missions"
-        description="Har roz sirf 1 ghanta deep learning. Short missions, practical steps aur daily tests."
+        description="Just 1 hour of deep learning every day. Short missions, practical steps, and daily tests."
       />
 
       {/* Progress Stats Summary */}
@@ -510,7 +510,7 @@ function LearningPage() {
             </div>
 
             <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-aurora">
-              {mission.title}
+              {mission?.title}
             </h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-3xl leading-relaxed">
               <strong>Focus Concept:</strong> {mission.focusTopic}
@@ -673,10 +673,10 @@ function LearningPage() {
                       <h4
                         className={`text-sm font-semibold transition-colors ${isChecked ? "text-emerald-400 line-through" : "text-foreground"}`}
                       >
-                        {task.title}
+                        {task?.title}
                       </h4>
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        {task.description}
+                        <FormatText text={task.description} />
                       </p>
                       {task.hint && (
                         <div className="text-[11px] text-accent font-mono flex items-center gap-1 mt-1">
@@ -752,7 +752,7 @@ function LearningPage() {
                     isQuizCorrect ? "text-emerald-400 block mb-1" : "text-red-400 block mb-1"
                   }
                 >
-                  {isQuizCorrect ? "Bilkul Sahi! ✨" : "Galat Answer! Koshish karte raho."}
+                  {isQuizCorrect ? "Absolutely Correct! ✨" : "Wrong Answer! Keep trying."}
                 </strong>
                 {mission.quiz.explanation}
               </div>
@@ -769,8 +769,7 @@ function LearningPage() {
                 Ready to complete Day {mission.day}?
               </h3>
               <p className="text-xs text-muted-foreground max-w-lg mx-auto">
-                Day {mission.day} ke tamam tasks check kijiye aur quiz ka sahi answer dekar apna +50
-                XP reward claim karein aur agle din ki tarf badhein!
+                Complete all tasks for Day {mission.day} and answer the quiz correctly to claim your +50 XP reward and move on to the next day!
               </p>
 
               <button
@@ -788,7 +787,7 @@ function LearningPage() {
 
               {!canComplete && !isCompleted && (
                 <p className="text-[11px] text-amber-400">
-                  * Sabhi tasks checklist complete karein aur Quiz ka sahi jawab dein (Green success
+                  * Complete the checklist for all tasks and answer the Quiz correctly (Green success
                   state).
                 </p>
               )}

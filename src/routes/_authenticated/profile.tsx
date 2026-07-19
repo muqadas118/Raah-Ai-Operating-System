@@ -108,8 +108,8 @@ function ProfilePage() {
   const submitFeedback = useMutation({
     mutationFn: async () => {
       const user = auth.currentUser;
-      if (!user) throw new Error("Aapko feedback bhejne ke liye login hona zaroori hai.");
-      if (feedbackRating === 0) throw new Error("Kuch toh stars select karein!");
+      if (!user) throw new Error("Please log in to send feedback.");
+      if (feedbackRating === 0) throw new Error("Please select a rating!");
       
       await addDoc(collection(db, "feedbacks"), {
         userId: user.uid,
@@ -121,12 +121,12 @@ function ProfilePage() {
       });
     },
     onSuccess: () => {
-      toast.success("Shukriya! Aapka feedback record kar liya gaya hai.");
+      toast.success("Thank you! Your feedback has been recorded.");
       setFeedbackRating(0);
       setFeedbackComment("");
     },
     onError: (e: Error) => {
-      toast.error(`Feedback send karne me masla hua: ${e.message}`);
+      toast.error(`Failed to submit feedback: ${e.message}`);
     },
   });
 
@@ -137,7 +137,7 @@ function ProfilePage() {
           icon={User}
           accent="Your Profile"
           title="Who is RaahAI helping?"
-          description="Yeh info AI ko personalize karti hai — jitna specific, utna better guidance."
+          description="This information helps personalize the AI — the more specific, the better your guidance."
         />
         <div className="rounded-2xl border border-border/60 bg-card/60 p-6 backdrop-blur space-y-5">
           {isLoading ? (
@@ -170,7 +170,7 @@ function ProfilePage() {
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                   rows={4}
-                  placeholder="Aap kaun ho, kya seekh rahe ho, kahan jaana chahte ho…"
+                  placeholder="Who are you, what are you learning?"
                 />
               </div>
               <Button
@@ -191,7 +191,7 @@ function ProfilePage() {
           <Star className="h-5 w-5 text-amber-500 fill-amber-500/20" />
           <div>
             <h3 className="text-lg font-semibold font-sans tracking-tight text-foreground">App Feedback & Rating</h3>
-            <p className="text-sm text-muted-foreground">RaahAI ke baare mein apna tajurba share karein aur isse mazeed behtar banayein.</p>
+            <p className="text-sm text-muted-foreground">Share your experience with RaahAI and help us make it even better.</p>
           </div>
         </div>
 
@@ -226,12 +226,12 @@ function ProfilePage() {
           </div>
 
           <div className="space-y-2">
-            <Label className="text-sm font-medium">Aapka Feedback</Label>
+            <Label className="text-sm font-medium">Your Feedback</Label>
             <Textarea
               value={feedbackComment}
               onChange={(e) => setFeedbackComment(e.target.value)}
               rows={3}
-              placeholder="Aapko kya pasand aaya? Hum isko kaise aur behtar bana sakte hain?..."
+              placeholder="What did you like? How can we make it even better?..."
             />
           </div>
 
@@ -240,7 +240,7 @@ function ProfilePage() {
             disabled={submitFeedback.isPending}
             className="glow-primary w-full sm:w-auto"
           >
-            {submitFeedback.isPending ? "Submitting..." : "Feedback Submit Karein"}
+            {submitFeedback.isPending ? "Submitting..." : "Submit Feedback"}
           </Button>
         </div>
       </div>

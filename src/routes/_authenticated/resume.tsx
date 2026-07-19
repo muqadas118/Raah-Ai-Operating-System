@@ -298,7 +298,7 @@ function ResumeBuilder() {
           doc.setFont("helvetica", "bold");
           doc.setFontSize(11);
           doc.setTextColor(33, 33, 33);
-          doc.text(item.title, margin, y);
+          doc.text(item?.title, margin, y);
           y += 5;
 
           doc.setFont("helvetica", "normal");
@@ -355,7 +355,7 @@ ${(resumeData.experienceAndProjects || []).map((p: { title: string; description:
       <PageHeader
         icon={FileText}
         title="ATS-Friendly Resume Builder"
-        description="Apna target opportunity, details, ya existing CV upload karein aur hum aapki CV ko perfect ATS guidelines ke mutabiq optimize aur refine karenge."
+        description="Upload your target opportunity details or existing CV, and we will optimize and refine it perfectly according to ATS guidelines."
       />
 
       <div className="grid gap-6 md:grid-cols-[1fr_300px]">
@@ -368,7 +368,7 @@ ${(resumeData.experienceAndProjects || []).map((p: { title: string; description:
                 Step 1: Upload Your Existing CV / Resume (Optional)
               </CardTitle>
               <CardDescription>
-                Apni existing CV file upload karein ya text paste karein taake AI aapka baseline
+                Upload your existing CV file or paste the text so the AI can build your baseline
                 data le sake.
               </CardDescription>
             </CardHeader>
@@ -454,8 +454,8 @@ ${(resumeData.experienceAndProjects || []).map((p: { title: string; description:
                 Step 2: Paste Target Job / Opportunity Details
               </CardTitle>
               <CardDescription>
-                Pehle target description ya role specifications copy-paste karein taake AI uss ke
-                mutabiq keywords adjust kare.
+                First, copy-paste the target description or role specifications so the AI can adjust
+                keywords accordingly.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -550,7 +550,7 @@ ${(resumeData.experienceAndProjects || []).map((p: { title: string; description:
                             className="group rounded-lg border border-slate-900 bg-slate-900/10 p-4 hover:border-slate-800/80 transition-colors"
                           >
                             <h4 className="font-semibold text-slate-200 text-sm mb-1">
-                              {item.title}
+                              {item?.title}
                             </h4>
                             <p className="text-xs text-slate-400 whitespace-pre-line leading-relaxed">
                               {item.description}
@@ -571,8 +571,8 @@ ${(resumeData.experienceAndProjects || []).map((p: { title: string; description:
                     Interactive AI Refinement (Adjustments & Changes)
                   </CardTitle>
                   <CardDescription>
-                    Kuch tabdeeli karwani hai? AI ko batayein ke kahan change karna hai (e.g.,
-                    "skills mein Docker add kardo", "summary thori professional bano", "project
+                    Want to make changes? Tell the AI what to change (e.g.,
+                    "add Docker to skills", "make the summary more professional", "rewrite project
                     content urdu mein likho").
                   </CardDescription>
                 </CardHeader>

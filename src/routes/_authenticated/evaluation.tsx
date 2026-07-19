@@ -129,7 +129,7 @@ function EvaluationPage() {
         kind: "quiz",
         milestone_id: milestone || null,
         milestone_title: selected?.title || null,
-        title: parsed.title ?? `Daily Quiz — ${topic}`,
+        title: parsed?.title ?? `Daily Quiz — ${topic}`,
         content: parsed,
         max_score: 100,
         status: "pending",
@@ -154,7 +154,7 @@ function EvaluationPage() {
         kind: "assignment",
         milestone_id: milestone || null,
         milestone_title: selected?.title || null,
-        title: parsed.title ?? `Assignment — ${topic}`,
+        title: parsed?.title ?? `Assignment — ${topic}`,
         content: parsed,
         max_score: 100,
         status: "pending",
@@ -214,7 +214,7 @@ function EvaluationPage() {
         icon={GraduationCap}
         accent="Evaluation Center"
         title="Learn. Prove. Level up."
-        description="Daily quizzes, assignments aur project submissions — RaahAI honestly evaluate karega aur points dega."
+        description="Daily quizzes, assignments, and project submissions — RaahAI will honestly evaluate you and award points."
       />
 
       {/* Stats */}
@@ -247,7 +247,7 @@ function EvaluationPage() {
               <option value="">— General / current focus —</option>
               {milestones.map((m) => (
                 <option key={m.id} value={m.id}>
-                  {m.title}
+                  {m?.title}
                 </option>
               ))}
             </select>
@@ -319,8 +319,8 @@ function EvaluationPage() {
         {(tab === "active" ? active : done).length === 0 && (
           <div className="text-center py-16 text-sm text-muted-foreground">
             {tab === "active"
-              ? "Koi active evaluation nahi. Upar se generate karo."
-              : "Abhi tak koi complete nahi hui."}
+              ? "No active evaluations. Click the button above to generate one."
+              : "No completed evaluations yet."}
           </div>
         )}
         {(tab === "active" ? active : done).map((e) => (
@@ -380,7 +380,7 @@ function EvalCard({
             {kindMeta.label}
             {evalRow.milestone_title && <> · {evalRow.milestone_title}</>}
           </div>
-          <div className="font-medium truncate">{evalRow.title}</div>
+          <div className="font-medium truncate">{evalRow?.title}</div>
         </div>
         {evalRow.status === "evaluated" ? (
           <div className="text-right">
@@ -444,10 +444,10 @@ function QuizForm({ evalRow, onDone }: { evalRow: Eval; onDone: () => void }) {
         detail,
         encouragement:
           correct === questions.length
-            ? "Perfect! 🔥 Kal aur mushkil quiz try karo."
+            ? "Perfect! 🔥 Try a more challenging quiz tomorrow."
             : correct >= questions.length * 0.6
-              ? "Solid — jo galat huye unke explanations padho."
-              : "Koi baat nahi. Explanations padh ke wapas try karo.",
+              ? "Solid effort! Review the explanations for any incorrect answers."
+              : "No worries! Read the explanations and try again.",
       };
 
       await updateDoc(doc(db, "evaluations", evalRow.id), {
@@ -462,7 +462,7 @@ function QuizForm({ evalRow, onDone }: { evalRow: Eval; onDone: () => void }) {
         await addDoc(collection(db, "activities"), {
           user_id: evalRow.user_id || auth.currentUser?.uid,
           type: "quiz_evaluated",
-          title: `Quiz evaluated: ${evalRow.title}`,
+          title: `Quiz evaluated: ${evalRow?.title}`,
           xp_earned: points_awarded,
           metadata: { evaluation_id: evalRow.id, score },
           created_at: new Date().toISOString(),
@@ -555,7 +555,7 @@ function SubmissionForm({ evalRow, onDone }: { evalRow: Eval; onDone: () => void
         data: {
           profile,
           dna,
-          evalTitle: evalRow.title,
+          evalTitle: evalRow?.title,
           instructions:
             evalRow.content?.instructions ?? evalRow.content?.project?.description ?? "",
           rubric: evalRow.content?.rubric ?? [],
@@ -579,7 +579,7 @@ function SubmissionForm({ evalRow, onDone }: { evalRow: Eval; onDone: () => void
         await addDoc(collection(db, "activities"), {
           user_id: user.uid,
           type: `${evalRow.kind}_evaluated`,
-          title: `${evalRow.kind === "assignment" ? "Assignment" : "Project"} evaluated: ${evalRow.title}`,
+          title: `${evalRow.kind === "assignment" ? "Assignment" : "Project"} evaluated: ${evalRow?.title}`,
           xp_earned: points_awarded,
           metadata: { evaluation_id: evalRow.id, score },
           created_at: new Date().toISOString(),
@@ -621,7 +621,7 @@ function SubmissionForm({ evalRow, onDone }: { evalRow: Eval; onDone: () => void
       )}
       {c.project && (
         <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 text-sm">
-          <div className="font-medium">{c.project.title}</div>
+          <div className="font-medium">{c.project?.title}</div>
           {c.project.description && (
             <div className="text-muted-foreground mt-1">{c.project.description}</div>
           )}

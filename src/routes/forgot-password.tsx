@@ -25,7 +25,7 @@ function ForgotPasswordPage() {
         url: `${window.location.origin}/auth`,
       });
       setSent(true);
-      toast.success("Reset link bhej diya!");
+      toast.success("Reset link sent!");
     } catch (error: unknown) {
       const err = error as { message?: string };
       toast.error(err.message || "An error occurred");
@@ -45,14 +45,14 @@ function ForgotPasswordPage() {
         </Link>
 
         <div className="rounded-2xl border border-border/60 bg-card/70 p-6 backdrop-blur">
-          <h1 className="text-xl font-semibold">Password reset karein</h1>
+          <h1 className="text-xl font-semibold">Reset your password</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Apna email daalein — hum reset link bhej denge.
+            Enter your email — we will send you a reset link.
           </p>
 
           {sent ? (
             <div className="mt-6 rounded-lg border border-border/60 bg-muted/30 p-4 text-sm">
-              Check your inbox for a password reset link. Link 1 hour tak valid rahega.
+              Check your inbox for a password reset link. The link is valid for 1 hour.
             </div>
           ) : (
             <form onSubmit={onSubmit} className="mt-6 space-y-4">

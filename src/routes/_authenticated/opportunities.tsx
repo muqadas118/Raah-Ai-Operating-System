@@ -198,10 +198,16 @@ function OpportunitiesPage() {
 
       const res = await generateApplySummaryAI({
         data: {
-          dnaData: baseData?.dna || {},
-          opportunityTitle: opp.title,
-          opportunityDesc: opp.description,
-          provider: opp.provider,
+          dna: baseData?.dna || {},
+          profile: baseData?.profile || {},
+          answers: baseData?.dna?.answers || baseData?.dna || {},
+          opportunity: {
+            title: opp?.title,
+            organization: opp?.provider || "",
+            type: opp?.type || "",
+            description: opp?.description || "",
+            website: opp?.link || "",
+          },
         },
       });
 
@@ -365,7 +371,7 @@ function OpportunitiesPage() {
                 >
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div className="flex flex-col gap-1">
-                      <h3 className="font-bold text-white leading-tight pr-4">{opp.title}</h3>
+                      <h3 className="font-bold text-white leading-tight pr-4">{opp?.title}</h3>
                       <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-mono">
                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         Active & Verified
@@ -449,7 +455,7 @@ function OpportunitiesPage() {
                       )}
                     </div>
                     <h2 className="text-3xl font-bold text-white leading-tight mb-2">
-                      {selectedOpp.title}
+                      {selectedOpp?.title}
                     </h2>
                     <p className="text-lg text-slate-400">{selectedOpp.provider}</p>
                   </div>

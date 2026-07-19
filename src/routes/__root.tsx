@@ -21,9 +21,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-cosmos px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-aurora">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">Yeh raah maujood nahi</h2>
+        <h2 className="mt-4 text-xl font-semibold">This path does not exist</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Jo page dhoond rahe ho woh exist nahi karta. Wapas home chalein.
+          The page you are looking for does not exist. Let's head back home.
         </p>
         <div className="mt-6">
           <Link
@@ -48,9 +48,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-cosmos px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight">Kuch galat ho gaya</h1>
+        <h1 className="text-xl font-semibold tracking-tight">Something went wrong</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Try again karein ya home par wapas jayein.
+          Please try again or head back to the home page.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button

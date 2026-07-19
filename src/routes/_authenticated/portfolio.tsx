@@ -72,7 +72,14 @@ function PortfolioBuilder() {
 
       const projectsQ = query(collection(db, "projects_forge"), where("user_id", "==", user.uid));
       const projectsSnap = await getDocs(projectsQ);
-      const projects = projectsSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as any);
+      let projects: any[] = [];
+      if (!projectsSnap.empty) {
+        const docs = projectsSnap.docs.map((d) => ({ id: d.id, ...d.data() }) as any);
+        docs.sort(
+          (a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime(),
+        );
+        projects = docs[0].projects || [];
+      }
 
       const expQ = query(collection(db, "portfolio_experiences"), where("user_id", "==", user.uid));
       const expSnap = await getDocs(expQ);
@@ -263,7 +270,7 @@ function PortfolioBuilder() {
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
-                  <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                  <h3 className="text-xl font-bold text-white">{exp?.title}</h3>
                   <div className="flex items-center gap-4 text-sm text-slate-400 mt-2 mb-4">
                     <span className="flex items-center gap-1.5">
                       <Building className="h-4 w-4" /> {exp.company}

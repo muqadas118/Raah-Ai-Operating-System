@@ -88,7 +88,7 @@ function BrandBuilderPage() {
         icon={Sparkles}
         accent="AI Brand Builder"
         title="Build Your Personal Brand"
-        description="LinkedIn posts, Twitter/X threads, bio, GitHub README — AI aapki growth story ko brand banata hai."
+        description="LinkedIn posts, Twitter/X threads, bio, GitHub README — the AI builds a brand around your growth story."
       />
 
       {/* Primary Tab Navigation */}
@@ -251,7 +251,7 @@ function SocialPostsModule({
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!progress.trim()) {
-      toast.error("Apni progress ya achievement enter karein!");
+      toast.error("Please enter your progress or achievement!");
       return;
     }
     setLoading(true);
@@ -287,7 +287,7 @@ function SocialPostsModule({
               rows={3}
               value={progress}
               onChange={(e) => setProgress(e.target.value)}
-              placeholder="e.g. Aaj maine React routing optimize ki hai and performance benchmarks me 40% improvement aayi hai."
+              placeholder="e.g. Today I optimized React routing and improved performance benchmarks by 40%."
               className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm resize-none"
             />
           </div>
@@ -488,8 +488,8 @@ function SocialPostsModule({
             <Linkedin className="w-12 h-12 text-slate-700 mb-4" />
             <h4 className="text-slate-300 font-medium mb-1">No Social Posts Generated</h4>
             <p className="text-xs text-slate-500 max-w-xs leading-normal">
-              Apni latest coding progress or project inputs enter karke custom-designed professional
-              updates generate karein.
+              Enter your latest coding progress or project inputs to generate custom-designed professional
+              updates.
             </p>
           </div>
         )}
@@ -561,7 +561,7 @@ function BioTaglineModule({
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!skills.trim() || !background.trim()) {
-      toast.error("Skills aur Background details likhna zaroori hai!");
+      toast.error("Please enter your skills and background details!");
       return;
     }
     setLoading(true);
@@ -741,7 +741,7 @@ function BioTaglineModule({
             <User className="w-12 h-12 text-slate-700 mb-4" />
             <h4 className="text-slate-300 font-medium mb-1">No Bios Generated Yet</h4>
             <p className="text-xs text-slate-500 max-w-xs leading-normal">
-              Skills, background goals set karein to turn your credentials into highly optimized,
+              Set your skills and background goals to turn your credentials into a highly optimized,
               catchy profiles.
             </p>
           </div>
@@ -813,7 +813,7 @@ function ReadmeOptimizerModule({
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !description.trim()) {
-      toast.error("Project title aur details specify karein!");
+      toast.error("Please specify project title and details!");
       return;
     }
     setLoading(true);
@@ -1092,7 +1092,7 @@ function ReadmeOptimizerModule({
             <Github className="w-12 h-12 text-slate-700 mb-4" />
             <h4 className="text-slate-300 font-medium mb-1">No README Generated Yet</h4>
             <p className="text-xs text-slate-500 max-w-xs leading-normal">
-              Project specs enter karein to auto-generate a comprehensive, high-quality, readable
+              Enter your project specs to auto-generate a comprehensive, high-quality, readable
               repository structure.
             </p>
           </div>
@@ -1171,7 +1171,7 @@ function ContentCalendarModule({
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!topic.trim()) {
-      toast.error("Niche or Core Topic enter karein!");
+      toast.error("Please enter your niche or core topic!");
       return;
     }
     setLoading(true);
@@ -1411,7 +1411,7 @@ function ContentCalendarModule({
             <Calendar className="w-12 h-12 text-slate-700 mb-4" />
             <h4 className="text-slate-300 font-medium mb-1">No Calendar suggestions Generated</h4>
             <p className="text-xs text-slate-500 max-w-xs leading-normal">
-              Apni coding niche set karein to map out 7 days of precise, engaging content ideas with
+              Set your coding niche to map out 7 days of precise, engaging content ideas with
               hooks and outlines.
             </p>
           </div>
@@ -1487,7 +1487,7 @@ function GrowthStoryModule({
   const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!background.trim() || !hurdle.trim() || !turningPoint.trim() || !currentResult.trim()) {
-      toast.error("Form ke saare fields fill karein taaki hum realistic story build kar sakein!");
+      toast.error("Please fill out all fields so we can build a realistic story!");
       return;
     }
     setLoading(true);
@@ -1544,21 +1544,21 @@ function GrowthStoryModule({
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-              3. Turning Point (Breakthrough kab aur kaise mila?) *
+              3. Turning Point (When and how did the breakthrough happen?) *
             </label>
             <textarea
               required
               rows={2}
               value={turningPoint}
               onChange={(e) => setTurningPoint(e.target.value)}
-              placeholder="e.g. Maine build-in-public join kiya, aur dynamic projects banaye manually, jisse client-side state hooks solve huye."
+              placeholder="e.g. I joined build-in-public and built dynamic projects manually, which helped me solve client-side state hooks."
               className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm resize-none"
             />
           </div>
 
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
-              4. Current Achievement (Succeeding state kya hai?) *
+              4. Current Achievement (What is the succeeding state?) *
             </label>
             <input
               required

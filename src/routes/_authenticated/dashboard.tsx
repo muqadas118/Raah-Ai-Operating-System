@@ -58,7 +58,7 @@ function Dashboard() {
       <PageHeader
         icon={LayoutDashboard}
         title={`Welcome back, ${name}`}
-        description="Yeh aapki growth cockpit hai. Har module se progress track karo aur RaahAI se guidance lo."
+        description="This is your growth cockpit. Track your progress across modules and get personalized guidance from RaahAI."
         accent="Home"
       />
 
@@ -115,8 +115,7 @@ function Dashboard() {
             <Target className="h-6 w-6 text-aurora mb-3" />
             <h3 className="font-display text-lg font-semibold">Growth DNA Calibrated!</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Aapka DNA assessment complete hai. Apni learning timeline aur active resume projects
-              ko track karein.
+              Your DNA assessment is complete. Keep tracking your learning timeline and active resume projects.
             </p>
             <Link
               to="/roadmap"
@@ -130,7 +129,7 @@ function Dashboard() {
             <Target className="h-6 w-6 text-primary mb-3" />
             <h3 className="font-display text-lg font-semibold">Take the Growth DNA Assessment</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              Apni asli growth signature discover karo aur personalized roadmap unlock karo.
+              Discover your true growth signature and unlock your personalized roadmap.
             </p>
             <Link
               to="/growth-dna"

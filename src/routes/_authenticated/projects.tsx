@@ -403,7 +403,7 @@ function ProjectsForgePage() {
     // Consecutive projects unlock only when previous project is complete & evaluated successfully
     const prevProj = projectsToShow[idx - 1];
     if (!prevProj) return false;
-    const prevEval = getProjectEval(idx - 1, prevProj.title);
+    const prevEval = getProjectEval(idx - 1, prevProj?.title);
     return prevEval?.status === "evaluated" || prevEval?.status === "passed"; // just in case
   };
 
@@ -736,8 +736,8 @@ function ProjectsForgePage() {
             </h3>
             {projectsToShow.map((project, idx) => {
               const isActive = activeProjectIdx === idx;
-              const unlocked = isProjectUnlocked(idx, project.title);
-              const pEval = getProjectEval(idx, project.title);
+              const unlocked = isProjectUnlocked(idx, project?.title);
+              const pEval = getProjectEval(idx, project?.title);
               return (
                 <button
                   key={project.id || idx}
@@ -759,7 +759,7 @@ function ProjectsForgePage() {
                       {unlocked && pEval?.status === "evaluated" && (
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                       )}
-                      {project.title}
+                      {project?.title}
                     </span>
                     <span
                       className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-full ${
@@ -822,8 +822,8 @@ function ProjectsForgePage() {
               {projectsToShow[activeProjectIdx] &&
                 (() => {
                   const project = projectsToShow[activeProjectIdx];
-                  const unlocked = isProjectUnlocked(activeProjectIdx, project.title);
-                  const projectEval = getProjectEval(activeProjectIdx, project.title);
+                  const unlocked = isProjectUnlocked(activeProjectIdx, project?.title);
+                  const projectEval = getProjectEval(activeProjectIdx, project?.title);
 
                   return (
                     <motion.div
@@ -906,7 +906,7 @@ function ProjectsForgePage() {
                               </span>
                             </div>
                             <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight mt-1">
-                              {project.title}
+                              {project?.title}
                             </h2>
                             <p className="text-slate-400 text-sm mt-1">{project.tagline}</p>
                           </div>
@@ -1245,7 +1245,7 @@ function ProjectsForgePage() {
                                         <p className="text-slate-400 mt-0.5">
                                           Project {activeProjectIdx + 2}:{" "}
                                           <strong>
-                                            {projectsToShow[activeProjectIdx + 1].title}
+                                            {projectsToShow[activeProjectIdx + 1]?.title}
                                           </strong>{" "}
                                           is now fully accessible in your sidebar.
                                         </p>
@@ -1294,7 +1294,7 @@ function ProjectsForgePage() {
                                       }
                                       evalMutation.mutate({
                                         index: activeProjectIdx,
-                                        projectTitle: project.title,
+                                        projectTitle: project?.title,
                                         description: submissionText,
                                         githubUrl: submissionLink,
                                       });

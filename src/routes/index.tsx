@@ -11,19 +11,19 @@ export const Route = createFileRoute("/")({
 
 const modules = [
   { icon: Dna, title: "Living Growth DNA", desc: "5-axis skill map that evolves with you." },
-  { icon: Compass, title: "Raahbar AI Copilot", desc: "Personal AI mentor jo har din guide kare." },
+  { icon: Compass, title: "Raahbar AI Copilot", desc: "Personal AI mentor guiding you every day." },
   { icon: Rocket, title: "Dynamic Roadmap", desc: "90-day adaptive roadmap based on your DNA." },
   {
     icon: Network,
     title: "Networking Coach",
-    desc: "LinkedIn, Discord, cold outreach — sab covered.",
+    desc: "LinkedIn, Discord, cold outreach — all covered.",
   },
   {
     icon: Trophy,
     title: "Opportunity Scout",
     desc: "Hackathons, jobs, scholarships auto-detected.",
   },
-  { icon: Sparkles, title: "Project Forge", desc: "AI recommends projects jo portfolio banayein." },
+  { icon: Sparkles, title: "Project Forge", desc: "AI-recommended projects that build your portfolio." },
 ];
 
 function Landing() {
@@ -96,7 +96,7 @@ function Landing() {
             One OS. <span className="text-aurora">Every growth module.</span>
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Chat karna, seekhna, network banana, projects, opportunities — sab ek jagah.
+            Chat, learn, network, manage projects, and discover opportunities — all in one place.
           </p>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -114,15 +114,15 @@ function Landing() {
           ))}
         </div>
       </section>
-
+ 
       {/* CTA */}
       <section className="mx-auto max-w-4xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 via-card to-accent/10 p-10 text-center glow-primary">
           <h2 className="font-display text-3xl font-bold sm:text-4xl">
-            Aapki growth story yahin se shuru
+            Your growth story starts here
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-            Sign up karo, apna Growth DNA generate karo, aur RaahAI baaki sab handle karega.
+            Sign up, generate your Growth DNA, and let RaahAI handle the rest.
           </p>
           <Link to="/auth" className="mt-6 inline-block">
             <Button size="lg" className="gap-2">

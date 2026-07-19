@@ -127,7 +127,7 @@ function RaahbarPage() {
     },
     onMutate: () => setInput(""),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["chat"] }),
-    onError: (e: any) => toast.error(e.message ?? "Bhejne me error"),
+    onError: (e: any) => toast.error(e.message ?? "Error sending message"),
   });
 
   const clear = useMutation({
@@ -155,10 +155,10 @@ function RaahbarPage() {
   }, [messages, send.isPending]);
 
   const suggestions = [
-    "Aaj kya sikhun?",
-    "Meri weakest DNA axis kaunsi hai?",
-    "Ek portfolio project suggest karo",
-    "Networking kaise shuru karun?",
+    "What should I learn today?",
+    "Which is my weakest DNA axis?",
+    "Suggest a portfolio project",
+    "How do I start networking?",
   ];
 
   return (
@@ -167,7 +167,7 @@ function RaahbarPage() {
         icon={MessageCircle}
         accent="AI Career Copilot"
         title="Raahbar — Your AI Mentor"
-        description="Aapki Growth DNA aur history yaad rakhta hai. Kuch bhi pucho — career, skills, projects, motivation."
+        description="Remembers your Growth DNA and chat history. Ask me anything — career, skills, projects, or motivation."
       />
 
       <div className="flex-1 flex flex-col rounded-2xl border border-border/60 bg-card/40 backdrop-blur overflow-hidden">
@@ -178,9 +178,9 @@ function RaahbarPage() {
                 <div className="absolute inset-0 rounded-full bg-primary/40 blur-2xl" />
                 <Sparkles className="relative h-12 w-12 text-aurora" />
               </div>
-              <h3 className="font-display text-xl font-semibold">Salaam! Main Raahbar hoon</h3>
+              <h3 className="font-display text-xl font-semibold">Hello! I am Raahbar</h3>
               <p className="text-sm text-muted-foreground mt-2 max-w-md">
-                Aapki growth journey ka personal mentor. Kuch bhi pucho.
+                Your personal mentor for your growth journey. Ask me anything.
               </p>
               <div className="mt-6 flex flex-wrap gap-2 justify-center max-w-lg">
                 {suggestions.map((s) => (
@@ -217,7 +217,7 @@ function RaahbarPage() {
             <div className="flex justify-start">
               <div className="rounded-2xl px-4 py-3 bg-background/60 border border-border/60 flex items-center gap-2">
                 <Loader2 className="h-3 w-3 animate-spin text-aurora" />
-                <span className="text-xs text-muted-foreground">Raahbar soch raha hai...</span>
+                <span className="text-xs text-muted-foreground">Raahbar is thinking...</span>
               </div>
             </div>
           )}
@@ -243,7 +243,7 @@ function RaahbarPage() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Raahbar se baat karo..."
+            placeholder="Talk to Raahbar (English / Roman Urdu)..."
             className="flex-1 rounded-lg bg-input/60 border border-border/60 px-4 py-2 text-sm focus:outline-none focus:border-primary"
             disabled={send.isPending}
           />

@@ -1,3 +1,4 @@
+import { FormatText } from "@/components/format-text";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -268,7 +269,7 @@ function NetworkingPage() {
       members: "210,000+ members",
       focus: "React & Frontend Web Development",
       description:
-        "React developers ki sabse badi dynamic hub. Custom #help-react aur jobs channels hain.",
+        "The biggest dynamic hub for React developers. Features custom #help-react and job channels.",
       hack: "Ask unique, genuine questions inside help channels, then DM active mentors who help you.",
       url: "https://www.reactiflux.com",
     },
@@ -279,7 +280,7 @@ function NetworkingPage() {
       members: "60,000+ members",
       focus: "Hackathons, Internships, Open Source",
       description:
-        "Kunal Kushwaha dwara banayi gayi, beginner friendly community jo code, open-source aur collaboration promote karti hai.",
+        "Created by Kunal Kushwaha, a beginner-friendly community that promotes code, open-source, and collaboration.",
       hack: "Active engagement in community projects directly connects you with high-level builders.",
       url: "https://wemakedevs.org",
     },
@@ -291,7 +292,7 @@ function NetworkingPage() {
       focus: "Regional Tech & Mentoring",
       description:
         "Outstanding local/regional developer platform focusing on local references, resume reviews and remote jobs.",
-      hack: "Don't miss the #introductions and #referrals channel. Standard resume upload karo yahan.",
+      hack: "Don't miss the #introductions and #referrals channel. Upload your standard resume here.",
       url: "https://github.com", // Fallback URL
     },
     {
@@ -336,13 +337,13 @@ function NetworkingPage() {
       title: "Elevator Pitch Taiyar Karein",
       step: "01",
       detail:
-        "Apna 30-second summary ready rakhein: 'Aap kaun hain, kis technology pe build karte hain (MERN/Python), aur currently kya exciting project bana rahe hain.'",
+        "Keep your 30-second summary ready: 'Who you are, what technology you build with (MERN/Python), and what exciting project you are currently working on.'",
     },
     {
       title: "Listen Before You Pitch",
       step: "02",
       detail:
-        "Jab kisi active technical circle me join karein, direct interact karne se pehle discuss ho rahi technical topic ko suniye. Frame your entry with value.",
+        "When joining an active technical circle, listen to the ongoing technical topic before directly interacting. Frame your entry with value.",
     },
     {
       title: "The Badge / Laptop Sticker Hack",
@@ -363,7 +364,7 @@ function NetworkingPage() {
       name: "Google Developer Groups (GDG) DevFests",
       frequency: "Annual / Multi-city",
       strategy:
-        "Speakers ki list pehle se dekhein. Unke open-source repositories check karke, presentation ke bad precise technical query pucho.",
+        "Check the list of speakers in advance. Review their open-source repositories and ask a precise technical query after their presentation.",
     },
     {
       name: "Local Web Dev / Tech Meetups",
@@ -375,7 +376,7 @@ function NetworkingPage() {
       name: "Tech Conferences (JSConf / PyCon)",
       frequency: "Annual",
       strategy:
-        "Volunteer bano! Local tech events me volunteer banne se speakers aur core organisers ke sath close interaction ka golden chance milta hai.",
+        "Become a volunteer! Volunteering at local tech events gives you a golden chance for close interaction with speakers and core organizers.",
     },
   ];
 
@@ -430,7 +431,7 @@ function NetworkingPage() {
     },
     onError: (err) => {
       console.error(err);
-      toast.error("Contact add karne me issue aaya.");
+      toast.error("Failed to add contact.");
     },
   });
 
@@ -513,7 +514,7 @@ function NetworkingPage() {
         icon={Network}
         accent="AI Networking Coach"
         title="Build Your Network — Guided"
-        description="Offline, online, LinkedIn, Discord, cold outreach — AI aapko sikhata bhi hai aur karwata bhi hai."
+        description="Offline, online, LinkedIn, Discord, cold outreach — AI teaches you and helps you execute it."
       />
 
       {/* Internal Feature Tabs Navigation */}
@@ -588,9 +589,9 @@ function NetworkingPage() {
               Recruiter-Magnet Profile Optimizer
             </h3>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6">
-              Recruiters keyword search ke through profile shortlist karte hain. Apne stack aur
-              current profile details enter karein, hamara AI aapke headlines, bios aur search
-              factors ko optimize karega.
+              Recruiters shortlist profiles through keyword searches. Enter your stack and
+              current profile details, and our AI will optimize your headlines, bios, and search
+              factors.
             </p>
 
             <div className="space-y-4">
@@ -647,7 +648,7 @@ function NetworkingPage() {
                   onChange={(e) =>
                     setLinkedinInput((prev) => ({ ...prev, experience: e.target.value }))
                   }
-                  placeholder="Apne projects/experience list karein jisse AI Google Formula ke bullet points likhe..."
+                  placeholder="List your projects/experience so the AI can write bullet points using the Google Formula..."
                   rows={3}
                   className="w-full rounded-xl border border-border bg-background/50 px-4 py-3 text-sm focus:border-primary focus:outline-none resize-none"
                 />
@@ -689,7 +690,7 @@ function NetworkingPage() {
                       <button
                         onClick={() => copyToClipboard(headline)}
                         className="absolute top-2 right-2 p-1.5 rounded bg-muted hover:bg-muted/80 text-muted-foreground"
-                        title="Headline copy karein"
+                        title="Copy headline"
                       >
                         <Copy className="h-3 w-3" />
                       </button>
@@ -711,8 +712,20 @@ function NetworkingPage() {
                     >
                       <Copy className="h-3 w-3" /> Copy About Text
                     </button>
-                    <div className="whitespace-pre-wrap text-xs md:text-sm text-muted-foreground leading-relaxed bg-background/50 rounded-xl p-4 border border-border/60">
-                      {auditResult.about_rewrite}
+                    <div className="text-left text-xs md:text-sm text-muted-foreground leading-relaxed bg-background/50 rounded-xl p-4 border border-border/60 space-y-2">
+                      {auditResult.about_rewrite.split('\n').map((line, i) => {
+                        const trimmed = line.trim();
+                        if (trimmed.startsWith('*') || trimmed.startsWith('-')) {
+                          const content = trimmed.substring(1).trim();
+                          return (
+                            <div key={i} className="flex gap-2 items-start ml-2 md:ml-4">
+                              <span className="text-primary mt-0.5">•</span>
+                              <span className="font-semibold text-foreground">{content}</span>
+                            </div>
+                          );
+                        }
+                        return <p key={i}>{line}</p>;
+                      })}
                     </div>
                   </div>
 
@@ -721,8 +734,20 @@ function NetworkingPage() {
                     <h4 className="font-display font-bold text-lg text-accent mb-3">
                       Google XYZ Bullet Formula Guidance
                     </h4>
-                    <div className="whitespace-pre-wrap text-xs md:text-sm text-muted-foreground leading-relaxed bg-background/50 rounded-xl p-4 border border-border/60 font-mono text-emerald-400">
-                      {auditResult.experience_bullet_points}
+                    <div className="text-left text-xs md:text-sm text-emerald-400/90 leading-relaxed bg-background/50 rounded-xl p-4 border border-border/60 font-mono space-y-2">
+                      {auditResult.experience_bullet_points.split('\n').map((line, i) => {
+                        const trimmed = line.trim();
+                        if (trimmed.startsWith('*') || trimmed.startsWith('-')) {
+                          const content = trimmed.substring(1).trim();
+                          return (
+                            <div key={i} className="flex gap-2 items-start ml-2 md:ml-4">
+                              <span className="text-emerald-500 mt-0.5">•</span>
+                              <span className="font-bold text-emerald-300">{content}</span>
+                            </div>
+                          );
+                        }
+                        return <p key={i}>{line}</p>;
+                      })}
                     </div>
                   </div>
                 </div>
@@ -778,9 +803,9 @@ function NetworkingPage() {
               AI Outreach Architect
             </h3>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6">
-              Custom template generate karein targeted roles ke hisab se. Standard professional
-              formats aur warm, regional-friendly Hinglish models available hain, jo cold outreach
-              messages ko genuine aur high-converting banate hain.
+              Generate a custom template based on targeted roles. Standard professional
+              formats and warm, friendly outreach models are available, which make cold outreach
+              messages genuine and high-converting.
             </p>
 
             <div className="space-y-4">
@@ -918,7 +943,7 @@ function NetworkingPage() {
                       <Copy className="h-3 w-3" /> Copy
                     </button>
                     <div className="font-mono text-xs md:text-sm rounded-xl p-3 border border-border/50 bg-background/60 text-emerald-400">
-                      {outreachResult.connection_note}
+                      <FormatText text={outreachResult.connection_note} />
                     </div>
                   </div>
                 )}
@@ -943,7 +968,7 @@ function NetworkingPage() {
                     <Copy className="h-3 w-3" /> Copy Full Message
                   </button>
                   <div className="whitespace-pre-wrap text-xs md:text-sm text-muted-foreground leading-relaxed bg-background/50 rounded-xl p-4 border border-border/60">
-                    {outreachResult.message_body}
+                    <FormatText text={outreachResult.message_body} />
                   </div>
                 </div>
               </div>
@@ -962,7 +987,7 @@ function NetworkingPage() {
                     <Copy className="h-3 w-3" />
                   </button>
                   <div className="text-xs text-muted-foreground bg-background/40 rounded-xl p-3 border border-border/50 leading-relaxed">
-                    {outreachResult.follow_up_note}
+                    <FormatText text={outreachResult.follow_up_note} />
                   </div>
                 </div>
 
@@ -975,7 +1000,7 @@ function NetworkingPage() {
                     </h5>
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    {outreachResult.networking_tip}
+                    <FormatText text={outreachResult.networking_tip} />
                   </p>
                 </div>
               </div>
@@ -1287,10 +1312,10 @@ function NetworkingPage() {
                 <div className="text-center py-16 rounded-2xl border border-border/60 bg-card/20 p-6">
                   <Users className="mx-auto h-12 w-12 text-muted-foreground/50 mb-3" />
                   <h4 className="font-display font-semibold text-sm">
-                    Aapka relationship tracker khali hai
+                    Your relationship tracker is empty
                   </h4>
                   <p className="text-xs text-muted-foreground max-w-sm mx-auto mt-1">
-                    Apne LinkedIn connections ya online groups ke links ko yahan add karein taake
+                    Add your LinkedIn connections or online group links here to
                     followups miss na hon!
                   </p>
                 </div>

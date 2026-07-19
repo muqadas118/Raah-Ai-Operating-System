@@ -95,6 +95,8 @@ Generate the roadmap now. Return ONLY the JSON object.`;
     return parsed;
   });
 
+
+
 // ---------------- Raahbar chat ----------------
 
 export const chatWithRaahbarAI = createServerFn({ method: "POST" })
@@ -102,8 +104,12 @@ export const chatWithRaahbarAI = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { message, dna, profile, assessments, projects, roadmap, history } = data;
 
-    const systemPrompt = `You are Raahbar — the user's personal AI growth mentor inside RaahAI. Speak in warm Hinglish (Urdu + English mix), like a supportive senior. Keep replies concise (3-6 sentences unless asked to go deep). Reference the user's Growth DNA, Roadmap, or Projects when relevant.
-You can guide them on how to build their projects, explain specific concepts, review internship/job opportunities, and act as a comprehensive tech career coach.
+    // AI will adapt to both English and Roman Urdu based on the user's input
+    const systemPrompt = `You are Raahbar — the user's personal AI growth mentor inside RaahAI. 
+DYNAMIC LANGUAGE RULE:
+- If the user messages you in English, reply in warm, encouraging, and highly professional English.
+- If the user messages you in Roman Urdu (Urdu written in Latin alphabets) or a mix of Urdu & English (Hinglish), reply in warm, supportive Roman Urdu.
+- Keep replies concise (3-6 sentences unless asked to go deep). Reference the user's Growth DNA, Roadmap, or Projects when relevant.
 
 USER CONTEXT:
 Name: ${profile?.full_name ?? "friend"}
@@ -119,7 +125,7 @@ ${JSON.stringify(roadmap ?? {})}
 FORGED PROJECTS:
 ${JSON.stringify(projects ?? [])}
 
-Give actionable, specific advice — never generic. If they ask about an opportunity or internship, guide them on what to prepare based on their current roadmap.`;
+Give actionable, specific advice — never generic.`;
 
     const messages = [
       { role: "system", content: systemPrompt },
@@ -128,11 +134,10 @@ Give actionable, specific advice — never generic. If they ask about an opportu
     ];
 
     const res = await callAI({ model: MODEL, messages });
-    const reply: string = res.choices?.[0]?.message?.content ?? "Sorry, kuch gadbad hui.";
+    const reply: string = res.choices?.[0]?.message?.content ?? "Sorry, something went wrong.";
 
     return { reply };
   });
-
 // ---------------- Project Forge ----------------
 
 export const forgeProjectsAI = createServerFn({ method: "POST" })
@@ -270,7 +275,7 @@ STRICT RULES:
 - Tell them EXACTLY which tools to open, which IDE to use (e.g. VS Code, Cursor), how to setup their environment (installing Node.js, setting up a package.json, or using a basic folder), and what console commands to run.
 - Include a simple "Interactive Task" they can try on their local machine right now.
 - Provide a multiple-choice "Quick Quiz" with 4 options, a correct answer index, and a helpful explanation to test their learning.
-- Write in a warm, encouraging, friendly Hinglish/English mix (Urdu/Hindi written in Roman characters blended with English, e.g. "Abhi ye command run karo," "VS Code open karo").
+- Write in a warm, encouraging, friendly English. Maintain a professional yet accessible tone.
 - Output STRICT JSON only, no prose, no markdown fences.
 
 JSON schema:
@@ -281,7 +286,7 @@ JSON schema:
   "ide_and_tools": {
     "recommended_ide": string (e.g., "VS Code" or "Cursor"),
     "required_tools": string[] (e.g., ["Node.js", "npm", "Terminal"]),
-    "setup_steps": string[] (Step-by-step setup instructions, e.g., "1. Folder banao named 'my-first-app'", "2. Terminal me 'npm init -y' run karo")
+    "setup_steps": string[] (Step-by-step setup instructions, e.g., "1. Create a folder named 'my-first-app'", "2. Run 'npm init -y' in the terminal")
   },
   "time_breakdown": [
     {
@@ -346,23 +351,23 @@ Generate the Daily Learning Mission for DAY ${dayNumber} now. Make it highly edu
         {
           duration_minutes: 15,
           activity: "IDE & Tool Setup",
-          description: "Terminal aur VS Code set up karna.",
+          description: "Setting up Terminal and VS Code.",
           step_by_step_instruction:
-            "Apne laptop pe VS Code aur Node.js download aur install karo. Command prompt/terminal kholo aur command verify karo.",
+            "Download and install VS Code and Node.js on your laptop. Open your terminal and verify the commands.",
         },
         {
           duration_minutes: 25,
           activity: "Core Practice",
-          description: "Topic ki basic concepts ko practice karna.",
+          description: "Practicing the basic concepts of the topic.",
           step_by_step_instruction:
-            "VS Code me naya folder kholo, naya file banao aur simple console logs ya functions likh kar run karo.",
+            "Open a new folder in VS Code, create a new file, and write simple console logs or functions and run them.",
         },
         {
           duration_minutes: 20,
           activity: "Mini Experiment & Quiz",
-          description: "Aaj seekhi hui concept ko change karke dekhna.",
+          description: "Modifying the concept learned today and checking the result.",
           step_by_step_instruction:
-            "Code me edits karo, verify karo output kaise change hota hai, aur interactive quiz complete karo.",
+            "Edit the code, verify how the output changes, and complete the interactive quiz.",
         },
       ];
     }
@@ -372,14 +377,14 @@ Generate the Daily Learning Mission for DAY ${dayNumber} now. Make it highly edu
           id: "task_1",
           title: "Install & Setup",
           description:
-            "Recommended IDE (VS Code) ko install aur launch karo, aur file structures banao.",
-          hint: "Apne OS ke hisab se official installer download karo.",
+            "Install and launch the recommended IDE (VS Code) and create the file structures.",
+          hint: "Download the official installer for your OS.",
         },
       ];
     }
     if (!parsed.quiz) {
       parsed.quiz = {
-        question: "Node.js code run karne ke liye terminal me kya command use hoti hai?",
+        question: "What command is used in the terminal to run Node.js code?",
         options: [
           "node filename.js",
           "npm run filename.js",
@@ -388,7 +393,7 @@ Generate the Daily Learning Mission for DAY ${dayNumber} now. Make it highly edu
         ],
         correct_option_index: 0,
         explanation:
-          "Node.js runtime file ko execute karne ke liye 'node <filename>' command use karta hai. 'npm run' scripts chalane ke liye hota hai package.json se.",
+          "Node.js uses the 'node <filename>' command to execute a file. 'npm run' is used to run scripts from package.json.",
       };
     }
 
@@ -987,7 +992,7 @@ Generate the custom apply-ready summary now. Return ONLY the JSON object.`;
 
     if (!parsed.cover_pitch) {
       parsed = {
-        cover_pitch: "Aapke liye pitch ready ho rahi hai...",
+        cover_pitch: "Preparing the pitch for you...",
         resume_tips: [
           "Highlight React, Node.js and systems architecture.",
           "Showcase your portfolio project from Roadmap.",

@@ -51,26 +51,26 @@ const STYLE_QUESTIONS = [
   {
     id: "q1",
     question:
-      "Aapki community team ke pass local project chalane ke liye funds bilkul khatam ho gaye hain. Aap pehla step kya lenge?",
+      "Your community team has completely run out of funds to run a local project. What is your first step?",
     options: [
       {
         key: "A",
-        text: "Team ko motivate karunga ke hum khud se choti contributions karein aur simple door-to-door campaign chalayein.",
+        text: "I will motivate the team to make small self-contributions and run a simple door-to-door campaign.",
         style: "Servant Leader",
       },
       {
         key: "B",
-        text: "Ek bare corporate sponsor ya local philanthropist se high-level pitch meeting schedule karne ka plan banaunga.",
+        text: "I will plan to schedule a high-level pitch meeting with a large corporate sponsor or local philanthropist.",
         style: "Visionary Leader",
       },
       {
         key: "C",
-        text: "Har team member ki skill inventory karunga ke kaise hum zero cost pe services barter karke kaam chala sakte hain.",
+        text: "I will assess each team member's skill inventory to figure out how we can run operations at zero cost through service bartering.",
         style: "Strategic Architect",
       },
       {
         key: "D",
-        text: "Social media par public advocacy campaign aur video appeal launch karunga taake local awareness se funding mil sake.",
+        text: "I will launch a public advocacy campaign and video appeal on social media to secure funding through local awareness.",
         style: "Grassroots Activist",
       },
     ],
@@ -78,26 +78,26 @@ const STYLE_QUESTIONS = [
   {
     id: "q2",
     question:
-      "Team ke do seniors aapas mein larr pare hain aur team ka morale down ho gaya hai. Aap iss situation ko kaise handle karenge?",
+      "Two senior team members are constantly arguing, and the team's morale has dropped. How will you handle this situation?",
     options: [
       {
         key: "A",
-        text: "Dono se individually mil kar unke personal issues sununga aur unhe support offer karunga taake peace restore ho.",
+        text: "I will meet with both individually to listen to their personal issues and offer support to restore peace.",
         style: "Servant Leader",
       },
       {
         key: "B",
-        text: "Dono ko poori team ke samne project ki high-level social value yaad dilaoonga taake choti laraiyan khatam hon.",
+        text: "I will remind both of them of the project's high-level social value in front of the entire team to put an end to petty conflicts.",
         style: "Visionary Leader",
       },
       {
         key: "C",
-        text: "Ek objective conflict resolution protocol design karke dono ke tasks aur visual roles ko separate kar dunga.",
+        text: "I will design an objective conflict resolution protocol and separate their tasks and visual roles.",
         style: "Strategic Architect",
       },
       {
         key: "D",
-        text: "Team ki open-circle baithak rukhunga jisme sab dil se bol saken aur direct feedback de kar baat khatam karein.",
+        text: "I will hold an open-circle team meeting where everyone can speak from the heart and resolve the issue through direct feedback.",
         style: "Grassroots Activist",
       },
     ],
@@ -105,26 +105,26 @@ const STYLE_QUESTIONS = [
   {
     id: "q3",
     question:
-      "Aapko local street school ke liye permission nahi mil rahi. Aap local authorities se kaise deal karenge?",
+      "You are unable to get permission for a local street school. How will you deal with the local authorities?",
     options: [
       {
         key: "A",
-        text: "Unhe dikhaoonga ke hum kaise unka bojh halka kar rahe hain aur unke saath continuous collaborative presence rakhunga.",
+        text: "I will show them how we are reducing their burden and maintain a continuous collaborative presence with them.",
         style: "Servant Leader",
       },
       {
         key: "B",
-        text: "Unhe batayunga ke kaise yeh street school future digital leadership ka hub ban kar poore area ki kismat badal sakta hai.",
+        text: "I will explain to them how this street school can become a hub for future digital leadership and change the fate of the entire area.",
         style: "Visionary Leader",
       },
       {
         key: "C",
-        text: "Sare rules, standard permissions aur legal documentation ka file folder bana kar professional format mein present karunga.",
+        text: "I will compile all rules, standard permissions, and legal documentation into a file folder and present it in a professional format.",
         style: "Strategic Architect",
       },
       {
         key: "D",
-        text: "Bacho ke parents aur local leaders ko sath mila kar ek visual community appeal ya peaceful token drive karunga.",
+        text: "I will team up with the children's parents and local leaders to organize a visual community appeal or peaceful token drive.",
         style: "Grassroots Activist",
       },
     ],
@@ -139,9 +139,9 @@ const SCENARIOS = [
     category: "Community Operations",
     difficulty: "Medium",
     description:
-      "Karachi ke flooded areas ke relief camp mein aapki volunteer team pichle 5 din se lagatar kaam kar rahi hai. Teams exhausted hain, log aapas mein choti baaton par behas kar rahe hain, aur raw materials ki supply delay ho rahi hai. Kal subah ek aur relief truck aana hai aur team ready nahi hai.",
+      "Your volunteer team has been working continuously for the past 5 days at a relief camp in the flooded areas of Karachi. The teams are exhausted, people are arguing over trivial matters, and the supply of raw materials is delayed. Another relief truck is arriving tomorrow morning and the team is not ready.",
     prompt:
-      "Aap as a Lead Volunteer apni team ko kaise inspire karenge aur task distribution kaise behtar karenge?",
+      "As a Lead Volunteer, how will you inspire your team and improve task distribution?",
   },
   {
     id: "sc-2",
@@ -149,9 +149,9 @@ const SCENARIOS = [
     category: "Youth Empowerment",
     difficulty: "Hard",
     description:
-      "Aapne Quetta ke ek government high school mein freelancing and digital skills bootcamp chalane ka socha hai. Lekin school management strict hai aur computers/labs lock hain. Kehte hain 'internet aur programming humare syllabus ka hissa nahi'. Students highly interested hain aur wait kar rahe hain.",
+      "You have planned to run a freelancing and digital skills bootcamp at a government high school in Quetta. However, the school management is strict and the computer labs are locked. They say 'internet and programming are not part of our syllabus'. The students are highly interested and waiting.",
     prompt:
-      "Aap school headmaster ko kaise convince karenge aur labs ka actual access unlock karwayenge?",
+      "How will you convince the school headmaster and unlock actual access to the labs?",
   },
   {
     id: "sc-3",
@@ -159,9 +159,9 @@ const SCENARIOS = [
     category: "Social Impact & Green Energy",
     difficulty: "Easy",
     description:
-      "Lahore ke ek dense local residential block mein gundagi aur kachre ka dher barhta jaa raha hai. Government local authorities slow hain. Aapne decide kiya hai ke 'Trash to Cash' initiative chalana hai jahan kachre se segregation seekhain aur bechein. Lekin residents asaan samajhte hain kachra gali mein phenkna.",
+      "In a dense local residential block in Lahore, dirt and garbage piles are increasing. Government local authorities are slow. You have decided to launch a 'Trash to Cash' initiative where they can learn waste segregation and sell it. However, residents find it easier to throw garbage in the street.",
     prompt:
-      "Ghar-ghar ja kar logoon ki coding ya behavior habits kaise badlenge aur community movement kaise khari karenge?",
+      "How will you go door-to-door to change people's coding or behavioral habits and build a community movement?",
   },
 ];
 
@@ -231,7 +231,7 @@ function LeadershipPage() {
     },
     onSuccess: (data) => {
       setSimulationResult(data);
-      toast.success("AI Mentors ne aapke decision ka review complete kar liya!");
+      toast.success("AI Mentors have completed reviewing your decision!");
     },
     onError: (e: any) => {
       toast.error(e.message || "Simulation failed");
@@ -303,7 +303,7 @@ function LeadershipPage() {
       <PageHeader
         icon={Trophy}
         title="AI Leadership & Social Impact Academy"
-        description="Pakistan ke multi-agent AI leadership development platform par apni superpowers assess karein, real-world crisis scenarios simulate karein, aur local community impact projects plan karein."
+        description="Assess your superpowers on this multi-agent AI leadership development platform, simulate real-world crisis scenarios, and plan local community impact projects."
         accent="Leadership"
       />
 
@@ -337,8 +337,7 @@ function LeadershipPage() {
                       Leadership Style Assessment
                     </CardTitle>
                     <CardDescription>
-                      Ye situational assessment bataye ga ke aap as a leader kis style ke malik hain
-                      aur aapki strengths kya hain.
+                      This situational assessment will determine your core leadership style and identify your primary strengths.
                     </CardDescription>
                   </div>
                 </div>
@@ -496,8 +495,7 @@ function LeadershipPage() {
               {/* Ready to Simulate */}
               <div className="flex justify-between items-center bg-slate-950 p-4 rounded-xl border border-slate-900">
                 <p className="text-xs sm:text-sm text-slate-400">
-                  Leadership style identified! Ab hum interactive simulated scenarios mein aapki
-                  strategies check karte hain.
+                  Leadership style identified! Now let's test your strategies in interactive simulated scenarios.
                 </p>
                 <Button
                   onClick={() => setActiveTab("simulator")}
@@ -767,8 +765,7 @@ function LeadershipPage() {
                     New Project Catalyst Planner
                   </CardTitle>
                   <CardDescription>
-                    Apna project idea enter karein ya template choose karein, AI iska step-by-step
-                    Pakistani neighborhood ya community implementation design bana dega.
+                    Enter your project idea or choose a template, and the AI will design a step-by-step implementation plan for your local community or neighborhood.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
